@@ -8,7 +8,6 @@
 
 (require net/url
          json)
-(require srfi/26)
 (require html-parsing
          sxml)
 
@@ -63,7 +62,7 @@
   (list->alist
    (map spliter
         (filter identity
-                (map (cut matcher <> line-tag)
+                (map (curryr matcher line-tag)
                      ((sxpath line-tag) content))))))
 
 ; (-> Dict String)
