@@ -18,7 +18,10 @@
 
 ; (-> String SXML)
 (define (get url-string)
-  (call/input-url (string->url url-string) get-pure-port html->xexp))
+  (call/input-url
+    (string->url url-string)
+    (curry get-pure-port #:redirections 5)
+    html->xexp))
 
 ; (-> SXML String String)
 (define (matcher line line-tag)
