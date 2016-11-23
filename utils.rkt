@@ -16,6 +16,7 @@
 (define sxpath/c
   (-> list? list?))
 
+;;; Get website source and turn it into sxml format.
 ; (-> String SXML)
 (define (get url-string)
   (call/input-url
@@ -23,6 +24,7 @@
     (curry get-pure-port #:redirections 5)
     html->xexp))
 
+;;; Filter the useful section of the line.
 ; (-> SXML String String)
 (define (matcher line line-tag)
   (match line
@@ -57,11 +59,13 @@
                 [(regexp #rx"状态") `(status . ,(convert-status v))]
                 [_ #f])))))
 
+;;; Change alist format to hash table, in order to easily write into json.
 ; (-> Dict Hash)
 (define (alist->hash alist)
   (make-hasheq (dict-remove alist 'status)))
 
-;(-> SXML String (Listof Dict))
+;;; Turn one account into alist format, which can be directly used.
+; (-> SXML String (Listof Dict))
 (define (parser content line-tag)
   (list->alist
    (map spliter
