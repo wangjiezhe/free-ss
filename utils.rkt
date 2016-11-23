@@ -29,6 +29,7 @@
     [`(,line-tag ,(? string? a)) a]
     [`(,line-tag ,(? string? a) (font ,_ ,(? string? b))) (string-append a b)]
     [`(,line-tag (font ,_ ,(? string? b))) b]
+    [`(,line-tag ,(? string? a) (span ,_ ...) ,(? string? b)) (string-append a b)]
     [_ #f]))
 
 ; (-> String (Listof String))
