@@ -4,7 +4,7 @@
 (require sxml)
 (require "utils.rkt")
 
-(define base-url "http://www.ishadowsocks.org/")
+(define base-url "http://iss.pm/")
 (define prefix "iss")
 
 (define query
