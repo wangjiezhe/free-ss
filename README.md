@@ -5,5 +5,5 @@ Fetch free shadowsocks accounts from internet.
 
 Available sources:
 
-* http://www.ishadowsocks.org
+* http://www.ishadowsocks.net
 * https://freevpnss.cc
